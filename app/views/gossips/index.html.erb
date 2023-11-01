@@ -1,0 +1,15 @@
+<Br><br><br>
+<div style="text-align: center;">
+    <h1>Voici la listes des Potins</h1>
+</div>
+
+<ul>
+  <% @gossips.each do |gossip| %>
+    <li>
+      <%= gossip.id %> <br> <%= gossip.title %> <br> <%= gossip.content %> <br> <%= gossip.user.name%> <br><br>
+    </li>
+    <form action="/gossips/:id" method="DELETE">
+    <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
+    <input type="submit" value="Supprimer">
+  <% end %>
+</ul>

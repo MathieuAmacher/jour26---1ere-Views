@@ -1,22 +1,33 @@
 <div style="text-align: center;">
-  <h1> <big><big> THE GOSSIP PROJECT </big></big> </h1>
+  <br><br><br>
+  <h1> <big><big><big><big> THE GOSSIP PROJECT </big></big></big></big> </h1>
   <h2> Bienvenue sur notre site trop cool</h2>
-  <h3>Vous avez gagné un Super Pouvoir : <br><br> <u><%= @random_name %></u></h3></div>
+  <br><h4>Vous avez gagné un Super Pouvoir :    <u><%= @random_name %></u></h4></div>
+  <br><br><br>
 </div>
 
  <tbody>
 
-    <% @gossips.each do |gossip| %>
-      <tr>
-  <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><td><%= gossip.title %><br></td></h5>
-    <h6 class="card-subtitle mb-2 text-muted"><td><%= gossip.gossip %><span></td></h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link"><td><%= gossip.title %><br></td></a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
 
-    <% end %> %>
+
+<div class="container">
+  
+  <% @gossips.each do |gossip| %>
+
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="row-md-4">
+            <h2><%= gossip.title %></h2>
+            <p><%= gossip.content %></p>
+            <p><a class="btn btn-secondary" href="gossip_path(gossip.id)" role="button">Les Potins de <%= gossip.user.name %>&raquo;</a></p>
+          </div>
+          
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+
+    <% end %>
   </tbody>

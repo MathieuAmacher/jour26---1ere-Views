@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   get '/', to: 'static_pages#home'
   get '/team', to: 'static_pages#team'
   get '/contact', to: 'static_pages#contact'
-  get '/gossip', to: 'static_pages#gossip'
+  post '/gossips/new', to: 'gossips#create'
+  delete '/gossips/:id', to: 'gossips#destroy'
 
 
-
+  resources :gossips
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
