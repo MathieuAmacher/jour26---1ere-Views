@@ -1,0 +1,25 @@
+<div style="text-align: center;">
+<br><br><br>
+<h1>Voici La Page Pour Créer Ton Compte</h1>
+<br><br><br>
+
+<%= form_tag model: @user do |form| %>
+
+<form action="/users_path" method="POST">
+    <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
+
+    <h2>Ecrivez Ici Votre Email</h2>
+  <input type="text" name="email"><br><br>
+    <h2>Ecrivez Ici Votre Password</h2>
+  <input type="text" name="password"><br><br>
+
+
+
+
+
+
+  <input type="submit" value="Enregistrer">
+
+</form>
+<% end %>
+</div>

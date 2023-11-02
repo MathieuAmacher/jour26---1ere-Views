@@ -1,25 +1,23 @@
 <div style="text-align: center;">
-<br><br><br>
-<h1>Voici La Page De Création De Nouveau Potin</h1>
-<br><br><br>
+  
+  <br><br><br>
+  <h1>Voici La Page De Création De Nouveau Potin</h1>
+  <br><br><br>
 
-<%= form_tag model: @gossip do |form| %>
+  <%= form_tag('/gossips', method: 'post') do %>
 
-<form action="/gossips(.:format)" method="POST">
+
     <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
 
     <h2>Ecrivez Ici Le Titre</h2>
-  <input type="text" name="title"><br><br>
+    <input type="text" name="title"><br><br>
+
     <h2>Ecrivez Ici Votre Potin</h2>
-  <input type="text" name="content"><br><br>
+    <input type="text" name="content"><br><br>
 
 
+    <button type="submit" value="Enregistrer">
 
 
-
-
-  <input type="submit" value="Enregistrer">
-
-</form>
-<% end %>
-
+  <% end %>
+</div>

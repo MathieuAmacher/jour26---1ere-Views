@@ -6,8 +6,7 @@ class GossipsController < ApplicationController
   end
 
   def show
-    @gossip = Gossip.find(params[:id])
-    puts params.inspect
+    @gossip = Gossip.find(params[:id])  
   end
 
   def new
@@ -15,10 +14,12 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @gossip = Gossip.new(title: params['title'], content: params['content'], user_id: User.all.sample.id)
+    @gossip = Gossip.create(title: params['title'], content: params['content'], user_id: User.all.sample.id)
+    @gossip.user = User.find_by(id: session[:user_id])
 
     if @gossip.save
-      redirect_to gossips_path, notice: 'Gossip was successfully created.'
+      flash[:success] = "Potin bien créé !"
+      redirect_to "/", notice: 'Gossip was successfully created.'
     else
       render 'new'
     end
@@ -29,20 +30,19 @@ class GossipsController < ApplicationController
   end
 
   def update
-    @gossip = Gossip.find(params[gossip_params])
-    puts gossip.params.inspect
-    gossip.params = params.require(:gossip).permit(:title, :content)
+    @gossip = Gossip.find(params[:id])
+    post_params = params.require(:gossip).permit(:title, :content)
     @gossip.update(gossip_params)
+    redirect_to "/"
 
   end
 
   def destroy
-    @gossip = Gossip.find(params[:id])
+    @gossip = Gossip.find_by([:id])
     @gossip.destroy
-    redirect_to gossips_path
+    redirect_to "/"
   end
-
-  # Other actions (show, edit, update, destroy) can remain as they are.
+  
 
   private
 

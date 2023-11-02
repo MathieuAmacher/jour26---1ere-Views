@@ -1,0 +1,21 @@
+<div style="text-align: center;">
+
+    <br><br><br>
+    <h1>Connectez Vous A Votre Session</h1>
+    <br><br><br>
+
+    <%= form_tag('/sessions', method: 'post') do %>
+
+
+        <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
+
+        <h2>Ecrivez Ici Votre Email</h2>
+        <input type="text" name="email"><br><br>
+
+        <h2>Ecrivez Ici Votre Password</h2>
+        <input type="text" name="password"><br><br>
+
+        <a class="btn btn-primary" button type="submit" value="Enregistrer">
+
+    <% end %>
+</div>

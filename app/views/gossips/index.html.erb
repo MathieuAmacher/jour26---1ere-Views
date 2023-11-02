@@ -1,15 +1,25 @@
 <Br><br><br>
 <div style="text-align: center;">
     <h1>Voici la listes des Potins</h1>
-</div>
-
-<ul>
+  
   <% @gossips.each do |gossip| %>
-    <li>
-      <%= gossip.id %> <br> <%= gossip.title %> <br> <%= gossip.content %> <br> <%= gossip.user.name%> <br><br>
-    </li>
-    <form action="/gossips/:id" method="DELETE">
-    <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
-    <input type="submit" value="Supprimer">
-  <% end %>
-</ul>
+<br><br>
+
+       <div class= "container-fluid">
+        <div class="row">
+          <div class="col-sm">
+            <h2><%= gossip.title %></h2>
+            <p><%= gossip.content %></p>
+            <p><a class="btn btn-primary" href="<%= gossip_path(gossip.id)%>" class="btn">Lire Le Potin &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="<%= new_gossip_path %>" class="btn">Modifier Le Potin</a></p>
+            <p><form action="/gossips/:id" method="delete"></a><input type="submit" value="Supprimer"></p>
+          </div>
+        </div>
+
+
+      </div> <!-- /container -->
+
+
+    <% end %>
+
+</div>
